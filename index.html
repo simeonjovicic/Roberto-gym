@@ -133,19 +133,10 @@
     }
 
     .logo-mark {
-      width: 3rem;
-      height: 1.7rem;
-      overflow: visible;
-    }
-
-    .logo-mark path,
-    .logo-mark polygon {
-      vector-effect: non-scaling-stroke;
-    }
-
-    .logo-draw path {
-      stroke-dasharray: 220;
-      stroke-dashoffset: 220;
+      width: 2.55rem;
+      height: 2.55rem;
+      object-fit: contain;
+      flex: 0 0 auto;
     }
 
     .nav-links {
@@ -1529,12 +1520,7 @@
   <header class="site-header" aria-label="Hauptnavigation">
     <div class="nav-shell">
       <a class="brand" href="#top" aria-label="DATRI Privat Gym Startseite">
-        <svg class="logo-mark logo-draw" viewBox="0 0 144 56" aria-hidden="true">
-          <path d="M13 45 26 11h36L49 45H13Z" fill="#f4eee4" stroke="#050505" stroke-width="5" stroke-linejoin="round"></path>
-          <path d="M66 45 79 11h35L101 45H66Z" fill="#f4eee4" stroke="#050505" stroke-width="5" stroke-linejoin="round"></path>
-          <path d="M105 45 117 10h17l-12 35h-17Z" fill="#050505" stroke="#050505" stroke-width="5" stroke-linejoin="round"></path>
-          <path d="M121 10h8l4 15" fill="none" stroke="#f4eee4" stroke-width="5" stroke-linecap="round"></path>
-        </svg>
+        <img class="logo-mark" src="logo.png" alt="" width="150" height="150" aria-hidden="true">
         <span>DATRI Privat Gym</span>
       </a>
       <nav class="nav-links" aria-label="Seitenbereiche">
@@ -1818,30 +1804,16 @@
 
     const parallaxItems = document.querySelectorAll("[data-parallax]");
     const siteHeader = document.querySelector(".site-header");
-    const logoPaths = document.querySelectorAll(".logo-draw path");
     const contactModal = document.querySelector("#contactModal");
     const contactOpenButtons = document.querySelectorAll("[data-contact-open]");
     const contactCloseButtons = document.querySelectorAll("[data-contact-close]");
     const contactForm = document.querySelector("#contactForm");
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let logoAnimated = false;
     let ticking = false;
 
     function updateHeader() {
       const hasScrolled = window.scrollY > 18;
       siteHeader.classList.toggle("is-visible", hasScrolled);
-
-      // Animate logo draw-on once when header first appears
-      if (hasScrolled && !logoAnimated && !reduceMotion) {
-        logoAnimated = true;
-        logoPaths.forEach((path, i) => {
-          const length = path.getTotalLength ? path.getTotalLength() : 220;
-          path.style.strokeDasharray = length;
-          path.style.strokeDashoffset = length;
-          path.style.transition = `stroke-dashoffset .7s ${i * 0.1 + 0.15}s var(--ease)`;
-          requestAnimationFrame(() => { path.style.strokeDashoffset = "0"; });
-        });
-      }
     }
 
     function updateParallax() {
