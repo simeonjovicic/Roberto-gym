@@ -1,0 +1,1156 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DATRI Privat Gym in Wien: Premium Box- und Kampfsporttraining mit sozialer Mission zum Schutz und zur Stärkung von Kindern.">
+  <title>DATRI Privat Gym | Gemeinsam zum Schutz unserer Kinder</title>
+  <style>
+    :root {
+      --black: #050505;
+      --ink: #10100f;
+      --charcoal: #171513;
+      --charcoal-2: #24201c;
+      --warm: #f4eee4;
+      --muted: #bdb3a5;
+      --gold: #c7a866;
+      --gold-soft: #ead7a4;
+      --red: #d22d2c;
+      --red-deep: #8d1719;
+      --line: rgba(244, 238, 228, 0.16);
+      --shadow: 0 30px 100px rgba(0, 0, 0, 0.55);
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--black);
+    }
+
+    body {
+      margin: 0;
+      color: var(--warm);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(199, 168, 102, 0.16), transparent 34rem),
+        linear-gradient(180deg, #080807 0%, #141210 42%, #070706 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 80;
+      opacity: 0.13;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 100;
+      transform: translateY(-150%);
+      padding: .75rem 1rem;
+      color: var(--black);
+      background: var(--warm);
+      border-radius: 999px;
+      transition: transform .25s var(--ease);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      display: flex;
+      justify-content: center;
+      padding: .9rem clamp(.9rem, 3vw, 2rem);
+      pointer-events: none;
+    }
+
+    .nav-shell {
+      width: min(1180px, 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .7rem .8rem .7rem 1rem;
+      border: 1px solid rgba(244, 238, 228, .14);
+      border-radius: 999px;
+      background: rgba(5, 5, 5, .56);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 50px rgba(0, 0, 0, .24);
+      pointer-events: auto;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      min-width: 0;
+      color: var(--warm);
+      font-weight: 900;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      white-space: nowrap;
+      font-size: .8rem;
+    }
+
+    .logo-mark {
+      width: 3rem;
+      height: 1.7rem;
+      overflow: visible;
+    }
+
+    .logo-mark path,
+    .logo-mark polygon {
+      vector-effect: non-scaling-stroke;
+    }
+
+    .logo-draw path {
+      stroke-dasharray: 220;
+      stroke-dashoffset: 220;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.1rem;
+      color: rgba(244, 238, 228, .75);
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      transition: color .2s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-soft);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.55rem;
+      padding: 0 1rem;
+      border: 1px solid rgba(234, 215, 164, .5);
+      border-radius: 999px;
+      color: var(--gold-soft);
+      font-size: .78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      transition: background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
+    }
+
+    .nav-cta:hover {
+      color: #120f0b;
+      background: var(--gold-soft);
+      transform: translateY(-1px);
+    }
+
+    main {
+      isolation: isolate;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      padding: 5.8rem clamp(1rem, 3.2vw, 2rem) 1rem;
+      background:
+        radial-gradient(circle at 70% 18%, rgba(255, 255, 255, .22), transparent 13rem),
+        radial-gradient(circle at 24% 72%, rgba(255, 255, 255, .13), transparent 16rem),
+        linear-gradient(135deg, #e2302f 0%, #b82225 47%, #681314 100%);
+      color: white;
+    }
+
+    .hero-frame {
+      position: relative;
+      min-height: calc(100svh - 6.8rem);
+      display: grid;
+      align-items: stretch;
+      overflow: hidden;
+      border: 1px solid rgba(244, 238, 228, .2);
+      border-radius: 1.35rem;
+      background:
+        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+      background-size: 4.25rem 4.25rem;
+      box-shadow: var(--shadow), inset 0 0 0 1px rgba(0, 0, 0, .25);
+    }
+
+    .hero-frame::before,
+    .hero-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero-frame::before {
+      background:
+        radial-gradient(circle at center, transparent 0 42%, rgba(0, 0, 0, .27) 74%),
+        linear-gradient(90deg, rgba(0, 0, 0, .28), transparent 20%, transparent 78%, rgba(0, 0, 0, .35));
+      z-index: 1;
+    }
+
+    .hero-frame::after {
+      inset: .7rem;
+      border: 1px solid rgba(244, 238, 228, .16);
+      border-radius: .95rem;
+      z-index: 3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 4;
+      min-height: inherit;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 2rem;
+      padding: clamp(1.2rem, 4vw, 4rem);
+    }
+
+    .hero-title-wrap {
+      align-self: center;
+      padding-top: clamp(1.5rem, 9vh, 5rem);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      margin: 0 0 1rem;
+      color: rgba(255, 255, 255, .78);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 2rem;
+      height: 1px;
+      background: currentColor;
+    }
+
+    h1 {
+      max-width: 15ch;
+      margin: 0;
+      color: white;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size: clamp(4rem, 17vw, 16rem);
+      font-weight: 900;
+      line-height: .78;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      text-wrap: balance;
+      filter: drop-shadow(0 18px 45px rgba(0, 0, 0, .35));
+    }
+
+    .title-outline {
+      color: transparent;
+      -webkit-text-stroke: clamp(1px, .13vw, 2px) rgba(244, 238, 228, .82);
+      text-shadow: none;
+    }
+
+    .hero-bottom {
+      display: grid;
+      gap: 1.4rem;
+      align-items: end;
+    }
+
+    .hero-copy {
+      max-width: 43rem;
+      margin: 0;
+      color: rgba(255, 255, 255, .86);
+      font-size: clamp(1.05rem, 2.7vw, 1.55rem);
+      line-height: 1.45;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.2rem;
+      padding: 0 1.15rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #120f0b;
+      background: var(--warm);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-soft);
+    }
+
+    .btn-secondary {
+      color: white;
+      border-color: rgba(255, 255, 255, .45);
+      background: rgba(0, 0, 0, .18);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold-soft);
+      color: var(--gold-soft);
+    }
+
+    .hero-figure {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      width: min(48vw, 34rem);
+      min-width: 18rem;
+      aspect-ratio: .72;
+      transform: translate(-44%, -48%);
+      pointer-events: none;
+      opacity: .98;
+    }
+
+    .fighter-silhouette {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 3rem 4rem rgba(0, 0, 0, .5));
+    }
+
+    .round-cta {
+      position: absolute;
+      right: clamp(1rem, 7vw, 6rem);
+      bottom: clamp(1.2rem, 5vw, 3.5rem);
+      z-index: 5;
+      display: none;
+      width: 11rem;
+      aspect-ratio: 1;
+      place-items: center;
+      color: var(--warm);
+      border-radius: 50%;
+    }
+
+    .round-cta span {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      animation: spinText 18s linear infinite;
+      background:
+        repeating-conic-gradient(from 0deg, transparent 0 5deg, rgba(244, 238, 228, .98) 5deg 7deg, transparent 7deg 13deg);
+      mask: radial-gradient(circle, transparent 0 54%, #000 55% 64%, transparent 65%);
+    }
+
+    .round-cta strong {
+      display: grid;
+      place-items: center;
+      width: 6.4rem;
+      height: 6.4rem;
+      border-radius: 50%;
+      color: var(--gold-soft);
+      background: #111;
+      border: 1px solid rgba(234, 215, 164, .3);
+      font-size: 1.65rem;
+      transition: transform .25s var(--ease), background .25s var(--ease);
+    }
+
+    .round-cta:hover strong {
+      transform: scale(1.06);
+      background: #050505;
+    }
+
+    @keyframes spinText {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .section {
+      position: relative;
+      padding: clamp(4rem, 9vw, 8rem) clamp(1rem, 4vw, 2rem);
+      overflow: hidden;
+    }
+
+    .section-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-kicker {
+      margin: 0 0 .8rem;
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      max-width: 12ch;
+      margin: 0;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size: clamp(2.8rem, 8.5vw, 7rem);
+      font-weight: 900;
+      line-height: .86;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      max-width: 49rem;
+      margin: 1.3rem 0 0;
+      color: rgba(244, 238, 228, .78);
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.62;
+    }
+
+    .split {
+      display: grid;
+      gap: 2.2rem;
+    }
+
+    .mission {
+      background:
+        linear-gradient(180deg, rgba(5, 5, 5, .1), rgba(5, 5, 5, .72)),
+        radial-gradient(circle at 100% 20%, rgba(199, 168, 102, .13), transparent 28rem);
+    }
+
+    .quote-panel {
+      align-self: end;
+      padding: clamp(1.25rem, 4vw, 2rem);
+      border: 1px solid rgba(199, 168, 102, .28);
+      border-radius: .5rem;
+      background: linear-gradient(145deg, rgba(199, 168, 102, .12), rgba(255, 255, 255, .035));
+      box-shadow: var(--shadow);
+    }
+
+    .quote-panel p {
+      margin: 0;
+      color: var(--warm);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.65rem, 4vw, 3.4rem);
+      line-height: 1.04;
+    }
+
+    .quote-panel small {
+      display: block;
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .training {
+      background: #0b0a09;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      margin-top: 2.4rem;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .feature {
+      min-height: 13rem;
+      padding: 1.4rem;
+      background: linear-gradient(145deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
+      transition: transform .25s var(--ease), background .25s var(--ease);
+    }
+
+    .feature:hover {
+      background: linear-gradient(145deg, rgba(199, 168, 102, .14), rgba(255, 255, 255, .026));
+    }
+
+    .feature b {
+      display: block;
+      color: var(--gold-soft);
+      font-size: 2.15rem;
+      line-height: 1;
+    }
+
+    .feature h3 {
+      margin: 1.4rem 0 .7rem;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+
+    .feature p {
+      margin: 0;
+      color: rgba(244, 238, 228, .68);
+      line-height: 1.55;
+    }
+
+    .impact {
+      background:
+        linear-gradient(rgba(0, 0, 0, .72), rgba(0, 0, 0, .8)),
+        linear-gradient(135deg, var(--red-deep), var(--red));
+    }
+
+    .impact-list {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .impact-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: start;
+      padding: 1.1rem 0;
+      border-top: 1px solid rgba(244, 238, 228, .22);
+    }
+
+    .impact-item:last-child {
+      border-bottom: 1px solid rgba(244, 238, 228, .22);
+    }
+
+    .impact-item span {
+      color: var(--gold-soft);
+      font-weight: 950;
+    }
+
+    .impact-item p {
+      margin: 0;
+      color: rgba(255, 255, 255, .82);
+      line-height: 1.6;
+    }
+
+    .trainer {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(199, 168, 102, .14), transparent 28rem),
+        #090807;
+    }
+
+    .legend-card {
+      position: relative;
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(199, 168, 102, .24);
+      border-radius: .65rem;
+      background: linear-gradient(145deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .018));
+      box-shadow: var(--shadow);
+    }
+
+    .legend-visual {
+      position: relative;
+      min-height: 24rem;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(244, 238, 228, .22), transparent 12rem),
+        linear-gradient(150deg, #2d2520, #080807);
+      overflow: hidden;
+    }
+
+    .legend-visual::before {
+      content: "FLASH";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(244, 238, 228, .035);
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size: clamp(6rem, 18vw, 13rem);
+      letter-spacing: 0;
+    }
+
+    .legend-visual svg {
+      position: absolute;
+      left: 50%;
+      bottom: -1rem;
+      width: min(78%, 27rem);
+      transform: translateX(-50%);
+      filter: drop-shadow(0 2rem 3rem rgba(0, 0, 0, .6));
+    }
+
+    .legend-body {
+      padding: 0 1.4rem 1.4rem;
+    }
+
+    .legend-body h3 {
+      margin: 0;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size: clamp(2.7rem, 9vw, 6.5rem);
+      line-height: .86;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .legend-body h3 span {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(234, 215, 164, .85);
+    }
+
+    .legend-body p {
+      color: rgba(244, 238, 228, .76);
+      line-height: 1.65;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      margin-top: 1.4rem;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .stat {
+      padding: 1.1rem;
+      background: rgba(5, 5, 5, .48);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--gold-soft);
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: .45rem;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .credibility {
+      background:
+        linear-gradient(180deg, #0b0a09, #14100d);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0;
+      margin-top: 2.4rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .timeline-row {
+      display: grid;
+      gap: .7rem;
+      padding: 1.3rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-row strong {
+      color: var(--gold-soft);
+      font-size: .86rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .timeline-row p {
+      margin: 0;
+      color: rgba(244, 238, 228, .72);
+      line-height: 1.6;
+    }
+
+    .final-cta {
+      min-height: 82svh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(199, 168, 102, .16), transparent 21rem),
+        linear-gradient(180deg, #050505, #130f0c);
+    }
+
+    .final-cta .section-title {
+      max-width: 11ch;
+      margin: 0 auto;
+    }
+
+    .final-cta .lead {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .85rem;
+      margin-top: 2rem;
+      color: rgba(244, 238, 228, .72);
+      font-size: .92rem;
+    }
+
+    footer {
+      padding: 2rem clamp(1rem, 4vw, 2rem);
+      color: rgba(244, 238, 228, .5);
+      border-top: 1px solid var(--line);
+      background: #050505;
+    }
+
+    .footer-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: .75rem;
+      font-size: .86rem;
+      line-height: 1.5;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translate3d(0, 34px, 0);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+    }
+
+    .reveal.from-left {
+      transform: translate3d(-34px, 0, 0);
+    }
+
+    .reveal.from-right {
+      transform: translate3d(34px, 0, 0);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    @media (min-width: 680px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .brand span {
+        font-size: .9rem;
+      }
+
+      .hero-bottom {
+        grid-template-columns: minmax(0, 43rem) auto;
+      }
+
+      .actions {
+        justify-content: flex-end;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .timeline-row {
+        grid-template-columns: 15rem 1fr;
+      }
+    }
+
+    @media (min-width: 940px) {
+      .split {
+        grid-template-columns: .95fr 1fr;
+        align-items: end;
+      }
+
+      .round-cta {
+        display: grid;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .legend-card {
+        grid-template-columns: .8fr 1.2fr;
+        align-items: stretch;
+      }
+
+      .legend-body {
+        padding: clamp(2rem, 4vw, 3rem);
+      }
+
+      .stats {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-shell {
+        padding-left: .8rem;
+      }
+
+      .nav-cta {
+        min-height: 2.35rem;
+        padding: 0 .8rem;
+        font-size: .7rem;
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .hero {
+        padding-left: .55rem;
+        padding-right: .55rem;
+      }
+
+      .hero-frame {
+        min-height: calc(100svh - 6.35rem);
+        border-radius: 1rem;
+      }
+
+      .hero-content {
+        padding: 1rem;
+      }
+
+      .hero-figure {
+        left: 57%;
+        top: 43%;
+        width: 24rem;
+        opacity: .9;
+      }
+
+      h1 {
+        font-size: clamp(3.6rem, 20vw, 7rem);
+      }
+
+      .actions .btn {
+        width: 100%;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal,
+      .reveal.from-left,
+      .reveal.from-right {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header class="site-header" aria-label="Hauptnavigation">
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="DATRI Privat Gym Startseite">
+        <svg class="logo-mark logo-draw" viewBox="0 0 144 56" aria-hidden="true">
+          <path d="M13 45 26 11h36L49 45H13Z" fill="#f4eee4" stroke="#050505" stroke-width="5" stroke-linejoin="round"></path>
+          <path d="M66 45 79 11h35L101 45H66Z" fill="#f4eee4" stroke="#050505" stroke-width="5" stroke-linejoin="round"></path>
+          <path d="M105 45 117 10h17l-12 35h-17Z" fill="#050505" stroke="#050505" stroke-width="5" stroke-linejoin="round"></path>
+          <path d="M121 10h8l4 15" fill="none" stroke="#f4eee4" stroke-width="5" stroke-linecap="round"></path>
+        </svg>
+        <span>DATRI Privat Gym</span>
+      </a>
+      <nav class="nav-links" aria-label="Seitenbereiche">
+        <a href="#mission">Mission</a>
+        <a href="#training">Training</a>
+        <a href="#trainer">Trainer</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <a class="nav-cta" href="mailto:office@datri-companygroup.at">Anfragen</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="hero-frame">
+        <div class="hero-figure" aria-hidden="true" data-parallax="0.12">
+          <svg class="fighter-silhouette" viewBox="0 0 420 560">
+            <path fill="#020202" d="M206 40c73-6 145 17 177 67 19 30 18 71 9 105-6 23-15 45-23 68-8 23-11 47-10 72 2 42 18 91-12 125-26 29-85 32-134 29-49-3-101-8-128-38-26-29-22-69-30-105-8-38-31-71-44-108-17-50-8-105 23-144C68 68 132 46 206 40Z"></path>
+            <path fill="#020202" d="M126 190c-33 17-57 50-62 87-3 24 1 45 10 66 10 23 26 43 43 62l40-37c-22-28-33-55-27-81 4-20 18-36 35-48l-39-49Z"></path>
+            <path fill="#020202" d="M307 177c42 15 70 49 77 91 6 35-5 68-26 101l-51-24c18-32 22-59 8-82-9-16-24-27-43-35l35-51Z"></path>
+            <path fill="#020202" d="M107 407c-2 34 10 58 34 72 23 14 51 17 84 18 38 1 77-2 103-24 18-15 28-37 26-66l-247 0Z"></path>
+          </svg>
+        </div>
+
+        <div class="hero-content">
+          <div class="hero-title-wrap reveal">
+            <p class="eyebrow">Privater Box- und Kampfsportverein in Wien</p>
+            <h1 id="hero-title">
+              Stärke mit <span class="title-outline">Haltung.</span><br>
+              Schutz durch <span class="title-outline">Sport.</span>
+            </h1>
+          </div>
+
+          <div class="hero-bottom reveal from-left">
+            <p class="hero-copy">DATRI Privat Gym verbindet exklusives Boxtraining, mentale Stärke und eine klare soziale Mission: Gemeinsam zum Schutz unserer Kinder.</p>
+            <div class="actions" aria-label="Aktionen">
+              <a class="btn btn-primary" href="mailto:office@datri-companygroup.at?subject=Training%20anfragen">Training anfragen</a>
+              <a class="btn btn-secondary" href="#impact">Initiative unterstützen</a>
+            </div>
+          </div>
+
+          <a class="round-cta" href="#mission" aria-label="Mehr über die Mission erfahren">
+            <span aria-hidden="true"></span>
+            <strong aria-hidden="true">↗</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission" class="section mission">
+      <div class="section-inner split">
+        <div class="reveal from-left">
+          <p class="section-kicker">Mission</p>
+          <h2 class="section-title">Kampfgeist mit Verantwortung.</h2>
+          <p class="lead">DATRI Privat Gym ist kein gewöhnliches Fitnessstudio. Der gemeinnützige Sportverein im 1. Bezirk stärkt Kinder, Jugendliche, Erwachsene und Senioren körperlich wie mental und nutzt Boxen als Werkzeug für Selbstvertrauen, Disziplin und Schutz.</p>
+        </div>
+        <aside class="quote-panel reveal from-right" aria-label="Motto">
+          <p>“Gemeinsam zum Schutz unserer Kinder”</p>
+          <small>Leitsatz des Vereins</small>
+        </aside>
+      </div>
+    </section>
+
+    <section id="training" class="section training">
+      <div class="section-inner">
+        <div class="reveal">
+          <p class="section-kicker">Training</p>
+          <h2 class="section-title">Individuell. Diszipliniert. Menschlich.</h2>
+          <p class="lead">Das Training wird an die jeweilige Person angepasst. Im Fokus stehen saubere Technik, körperliche Leistungsfähigkeit, mentale Stabilität und ein respektvoller Umgang im Studio.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature reveal">
+            <b>01</b>
+            <h3>Alle Altersklassen</h3>
+            <p>Box- und Kampfsporttraining für Kinder, Jugendliche, Erwachsene und Senioren.</p>
+          </article>
+          <article class="feature reveal">
+            <b>02</b>
+            <h3>Mentale Stärke</h3>
+            <p>Training für Selbstbewusstsein, Fokus, Körpergefühl und innere Stabilität.</p>
+          </article>
+          <article class="feature reveal">
+            <b>03</b>
+            <h3>Einzelne Bedürfnisse</h3>
+            <p>Individuelle Betreuung statt Schema. Jede Einheit folgt dem Menschen, nicht der Masse.</p>
+          </article>
+          <article class="feature reveal">
+            <b>04</b>
+            <h3>Inklusion</h3>
+            <p>Kinder mit körperlichen Beeinträchtigungen sind willkommen und erhalten angepasste Unterstützung.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact" class="section impact">
+      <div class="section-inner split">
+        <div class="reveal from-left">
+          <p class="section-kicker">Social Impact</p>
+          <h2 class="section-title">Sport als Schutzraum.</h2>
+        </div>
+        <div class="reveal from-right">
+          <p class="lead">Der Verein bietet kostenlose Boxtrainings für Kinder und Jugendliche an, die mit Gewalt, Missbrauch oder Misshandlung in Berührung gekommen sind. Sport wird hier zu einem Ort für Mut, Orientierung und Würde.</p>
+          <div class="impact-list">
+            <div class="impact-item">
+              <span>01</span>
+              <p>Kostenlose Trainings für betroffene Kinder und Jugendliche.</p>
+            </div>
+            <div class="impact-item">
+              <span>02</span>
+              <p>Charity-Sportkampf-Events, bei denen Einnahmen an Kinderschutzarbeit gespendet werden.</p>
+            </div>
+            <div class="impact-item">
+              <span>03</span>
+              <p>Sensibilisierung für Gewalt, Missbrauch und Misshandlung in einem angemessenen sportlichen Rahmen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trainer" class="section trainer">
+      <div class="section-inner">
+        <div class="reveal">
+          <p class="section-kicker">Trainerprofil</p>
+          <h2 class="section-title">Franky The Flash.</h2>
+          <p class="lead">Franciszek “Franky The Flash” Pawlak steht für internationale Kampfsporterfahrung, pädagogisches Engagement und glaubwürdige Autorität im Umgang mit Kindern und Jugendlichen.</p>
+        </div>
+
+        <article class="legend-card reveal">
+          <div class="legend-visual" aria-hidden="true" data-parallax="0.08">
+            <svg viewBox="0 0 360 440">
+              <path fill="#050505" d="M176 24c58-3 107 23 128 66 16 33 10 74-7 108-12 25-28 46-32 75-5 34 11 74-12 101-20 23-66 29-103 26-40-3-78-14-93-43-15-28-4-62-11-93-7-33-33-59-42-92-11-40 2-85 33-112 31-28 81-34 139-36Z"></path>
+              <path fill="#050505" d="M86 157c-36 19-54 53-49 88 4 30 25 56 54 77l38-41c-26-22-35-47-25-71 7-17 22-30 41-39l-59-14Z"></path>
+              <path fill="#050505" d="M273 152c36 12 62 37 70 71 8 36-7 73-36 104l-45-35c22-30 24-58 6-82-11-14-26-24-45-30l50-28Z"></path>
+              <path fill="#050505" d="M70 329c10 54 49 83 112 83 64 0 103-28 115-83H70Z"></path>
+            </svg>
+          </div>
+          <div class="legend-body">
+            <h3>Franciszek <span>Pawlak</span></h3>
+            <p>Mehrfacher Kickbox-Weltmeister, in Österreich lebender polnischer Thai-Kickbox-Profi und erfahrener Trainer. Seine Arbeit verbindet sportliche Härte mit Verantwortung, Geduld und besonderem Einsatz für Kinder.</p>
+            <div class="stats" aria-label="Leistungsdaten">
+              <div class="stat">
+                <strong>100+</strong>
+                <span>Kämpfe</span>
+              </div>
+              <div class="stat">
+                <strong>60</strong>
+                <span>KO-Siege</span>
+              </div>
+              <div class="stat">
+                <strong>15x</strong>
+                <span>Weltmeister</span>
+              </div>
+              <div class="stat">
+                <strong>12s</strong>
+                <span>Schnellster KO</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section credibility">
+      <div class="section-inner split">
+        <div class="reveal from-left">
+          <p class="section-kicker">Credibility</p>
+          <h2 class="section-title">Respekt im Ring. Haltung daneben.</h2>
+        </div>
+        <div class="reveal from-right">
+          <p class="lead">Der DATRI-Kader nimmt seit Jahren an Kickbox- und Thaibox-Wettkämpfen weltweit teil. Diese Erfahrung prägt das Training: präzise, respektvoll, fokussiert und leistungsorientiert.</p>
+          <div class="timeline">
+            <div class="timeline-row">
+              <strong>International</strong>
+              <p>Wettkampferfahrung im Kickboxen und Thaiboxen auf internationaler Bühne.</p>
+            </div>
+            <div class="timeline-row">
+              <strong>Disziplin</strong>
+              <p>Technik, Kontrolle und Konsequenz stehen über Show und kurzfristigem Ego.</p>
+            </div>
+            <div class="timeline-row">
+              <strong>Respekt</strong>
+              <p>Stärke wird als Verantwortung verstanden, besonders im Umgang mit Kindern.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section final-cta">
+      <div class="section-inner reveal">
+        <p class="section-kicker">Kontakt</p>
+        <h2 class="section-title">Werde Teil der Bewegung.</h2>
+        <p class="lead">Trainiere mit Haltung, unterstütze die Initiative oder nimm Kontakt mit dem DATRI Privat Gym auf.</p>
+        <div class="actions" style="justify-content:center; margin-top: 2rem;">
+          <a class="btn btn-primary" href="mailto:office@datri-companygroup.at?subject=Training%20anfragen">Training anfragen</a>
+          <a class="btn btn-secondary" href="tel:+436605749013">+43 660 5749013</a>
+        </div>
+        <div class="contact-strip" aria-label="Vereinsdaten">
+          <span>Josefsplatz 6 / 1010 Wien</span>
+          <span>office@datri-companygroup.at</span>
+          <span>ZVR 1565062888</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <strong>DATRI PRIVAT GYM Sportverein</strong>
+      <span>Gemeinnütziger privater Box- und Kampfsportverein in Wien. Konto: AT14 2011 1841 4344 5700, Erste Bank.</span>
+    </div>
+  </footer>
+
+  <script>
+    const revealItems = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+
+    revealItems.forEach((item, index) => {
+      item.style.transitionDelay = `${Math.min(index % 4, 3) * 80}ms`;
+      observer.observe(item);
+    });
+
+    const parallaxItems = document.querySelectorAll("[data-parallax]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function updateParallax() {
+      if (reduceMotion) return;
+      const scrollY = window.scrollY || window.pageYOffset;
+      parallaxItems.forEach((item) => {
+        const speed = Number(item.dataset.parallax || 0);
+        item.style.translate = `0 ${scrollY * speed * -0.16}px`;
+      });
+    }
+
+    updateParallax();
+    window.addEventListener("scroll", updateParallax, { passive: true });
+  </script>
+</body>
+</html>
