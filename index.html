@@ -95,11 +95,19 @@
       display: flex;
       justify-content: center;
       padding: .9rem clamp(.9rem, 3vw, 2rem);
+      opacity: 0;
+      transform: translate3d(0, -120%, 0) scale(.98);
       pointer-events: none;
+      transition: opacity .55s var(--ease), transform .55s var(--ease), padding .55s var(--ease);
+    }
+
+    .site-header.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
     }
 
     .nav-shell {
-      width: min(1180px, 100%);
+      width: min(980px, 100%);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -107,10 +115,19 @@
       padding: .7rem .8rem .7rem 1rem;
       border: 1px solid rgba(244, 238, 228, .14);
       border-radius: 999px;
-      background: rgba(5, 5, 5, .56);
+      background: rgba(5, 5, 5, .68);
       backdrop-filter: blur(18px);
       box-shadow: 0 12px 50px rgba(0, 0, 0, .24);
       pointer-events: auto;
+      transform-origin: top center;
+      transition: width .55s var(--ease), background .55s var(--ease), border-color .55s var(--ease), box-shadow .55s var(--ease);
+    }
+
+    .site-header.is-visible .nav-shell {
+      width: min(1180px, 100%);
+      border-color: rgba(244, 238, 228, .18);
+      background: rgba(5, 5, 5, .72);
+      box-shadow: 0 18px 70px rgba(0, 0, 0, .34);
     }
 
     .brand {
@@ -191,7 +208,7 @@
     .hero {
       position: relative;
       min-height: 100svh;
-      padding: 5.8rem clamp(1rem, 3.2vw, 2rem) 1rem;
+      padding: clamp(.65rem, 1.5vw, 1.25rem);
       background:
         radial-gradient(circle at 70% 18%, rgba(255, 255, 255, .22), transparent 13rem),
         radial-gradient(circle at 24% 72%, rgba(255, 255, 255, .13), transparent 16rem),
@@ -201,7 +218,7 @@
 
     .hero-frame {
       position: relative;
-      min-height: calc(100svh - 6.8rem);
+      min-height: calc(100svh - clamp(1.3rem, 3vw, 2.5rem));
       display: grid;
       align-items: stretch;
       overflow: hidden;
@@ -241,14 +258,14 @@
       z-index: 4;
       min-height: inherit;
       display: grid;
-      grid-template-rows: 1fr auto;
-      gap: 2rem;
-      padding: clamp(1.2rem, 4vw, 4rem);
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: clamp(1rem, 3vh, 2rem);
+      padding: clamp(1.05rem, 4vw, 4.2rem);
     }
 
     .hero-title-wrap {
       align-self: center;
-      padding-top: clamp(1.5rem, 9vh, 5rem);
+      padding-top: clamp(.5rem, 5vh, 2.8rem);
     }
 
     .eyebrow {
@@ -271,13 +288,13 @@
     }
 
     h1 {
-      max-width: 15ch;
+      max-width: 13ch;
       margin: 0;
       color: white;
       font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      font-size: clamp(4rem, 17vw, 16rem);
+      font-size: clamp(3.35rem, 10.4vw, 10.7rem);
       font-weight: 900;
-      line-height: .78;
+      line-height: .84;
       letter-spacing: 0;
       text-transform: uppercase;
       text-wrap: balance;
@@ -300,7 +317,7 @@
       max-width: 43rem;
       margin: 0;
       color: rgba(255, 255, 255, .86);
-      font-size: clamp(1.05rem, 2.7vw, 1.55rem);
+      font-size: clamp(1rem, 1.7vw, 1.35rem);
       line-height: 1.45;
     }
 
@@ -353,13 +370,13 @@
 
     .hero-figure {
       position: absolute;
-      left: 50%;
-      top: 50%;
+      left: 58%;
+      top: 0;
       z-index: 2;
-      width: min(48vw, 34rem);
-      min-width: 18rem;
-      aspect-ratio: .72;
-      transform: translate(-44%, -48%);
+      width: min(52.5vw, 36.25rem);
+      min-width: 22.5rem;
+      height: min(122svh, 60rem);
+      transform: translate(-44%, -5.5%);
       pointer-events: none;
       opacity: .98;
     }
@@ -367,6 +384,7 @@
     .fighter-silhouette {
       width: 100%;
       height: 100%;
+      object-fit: contain;
       filter: drop-shadow(0 3rem 4rem rgba(0, 0, 0, .5));
     }
 
@@ -376,7 +394,7 @@
       bottom: clamp(1.2rem, 5vw, 3.5rem);
       z-index: 5;
       display: none;
-      width: 11rem;
+      width: clamp(8.5rem, 10vw, 11rem);
       aspect-ratio: 1;
       place-items: center;
       color: var(--warm);
@@ -396,8 +414,8 @@
     .round-cta strong {
       display: grid;
       place-items: center;
-      width: 6.4rem;
-      height: 6.4rem;
+      width: 58%;
+      height: 58%;
       border-radius: 50%;
       color: var(--gold-soft);
       background: #111;
@@ -846,7 +864,7 @@
       }
 
       .hero-frame {
-        min-height: calc(100svh - 6.35rem);
+        min-height: calc(100svh - 1.1rem);
         border-radius: 1rem;
       }
 
@@ -855,14 +873,16 @@
       }
 
       .hero-figure {
-        left: 57%;
-        top: 43%;
-        width: 24rem;
+        left: 70%;
+        top: 0;
+        width: 30rem;
+        height: 112svh;
+        transform: translate(-48%, -6%);
         opacity: .9;
       }
 
       h1 {
-        font-size: clamp(3.6rem, 20vw, 7rem);
+        font-size: clamp(3.25rem, 16.5vw, 6.15rem);
       }
 
       .actions .btn {
@@ -921,12 +941,7 @@
     <section id="top" class="hero" aria-labelledby="hero-title">
       <div class="hero-frame">
         <div class="hero-figure" aria-hidden="true" data-parallax="0.12">
-          <svg class="fighter-silhouette" viewBox="0 0 420 560">
-            <path fill="#020202" d="M206 40c73-6 145 17 177 67 19 30 18 71 9 105-6 23-15 45-23 68-8 23-11 47-10 72 2 42 18 91-12 125-26 29-85 32-134 29-49-3-101-8-128-38-26-29-22-69-30-105-8-38-31-71-44-108-17-50-8-105 23-144C68 68 132 46 206 40Z"></path>
-            <path fill="#020202" d="M126 190c-33 17-57 50-62 87-3 24 1 45 10 66 10 23 26 43 43 62l40-37c-22-28-33-55-27-81 4-20 18-36 35-48l-39-49Z"></path>
-            <path fill="#020202" d="M307 177c42 15 70 49 77 91 6 35-5 68-26 101l-51-24c18-32 22-59 8-82-9-16-24-27-43-35l35-51Z"></path>
-            <path fill="#020202" d="M107 407c-2 34 10 58 34 72 23 14 51 17 84 18 38 1 77-2 103-24 18-15 28-37 26-66l-247 0Z"></path>
-          </svg>
+          <img class="fighter-silhouette" src="./ChatGPT Image Apr 24, 2026 at 09_26_29 PM.png" alt="">
         </div>
 
         <div class="hero-content">
@@ -1138,7 +1153,13 @@
     });
 
     const parallaxItems = document.querySelectorAll("[data-parallax]");
+    const siteHeader = document.querySelector(".site-header");
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function updateHeader() {
+      const hasScrolled = window.scrollY > 18;
+      siteHeader.classList.toggle("is-visible", hasScrolled);
+    }
 
     function updateParallax() {
       if (reduceMotion) return;
@@ -1149,7 +1170,9 @@
       });
     }
 
+    updateHeader();
     updateParallax();
+    window.addEventListener("scroll", updateHeader, { passive: true });
     window.addEventListener("scroll", updateParallax, { passive: true });
   </script>
 </body>
